@@ -1,10 +1,19 @@
 from django.db import models
 
-# Create your models here.
 
 class Brand(models.Model):
     name = models.CharField(max_length=127, default='')
 
+    def __str__(self):
+        return self.name
+
 class Mark(models.Model):
-    bramd = models.ForeignKey(Brand, on_delete=models.CASCADE, related_name='marks')
+    brand = models.ForeignKey(Brand, on_delete=models.CASCADE, related_name='marks')
     name = models.CharField(max_length=127, default='')
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Марка'
+        verbose_name_plural = 'Марки'
